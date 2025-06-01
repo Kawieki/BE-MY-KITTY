@@ -1,5 +1,4 @@
 import pygame
-
 from entities.Animal import Animal
 from scenes.base_scene import BaseScene
 from scenes.game_scene import GameScene
@@ -9,7 +8,7 @@ class CharacterSettingsScene(BaseScene):
     def __init__(self, selected_character):
         self.selected_character = selected_character
         self.font = pygame.font.SysFont(None, 48)
-        self.title = self.font.render("Character Settings", True, Colors.WHITE.value)
+        self.title = self.font.render(self.selected_character.label, True, Colors.WHITE.value)
 
         self.character_data = {
             "Name": "",
@@ -29,20 +28,15 @@ class CharacterSettingsScene(BaseScene):
 
         # Buttons for age adjustment
         self.age_up_button = Button(SCREEN_WIDTH // 2 + 110, 260, 40, 40, "+", font_size=32, color=Colors.GREEN.value)
-        self.age_down_button = Button(self.age_up_button.rect.x + self.age_up_button.rect.width + 10, 260, 40, 40, "-",
-                                      font_size=32, color=Colors.RED.value)
+        self.age_down_button = Button(self.age_up_button.rect.x + self.age_up_button.rect.width + 10, 260, 40, 40, "-",font_size=32, color=Colors.RED.value)
 
         # Buttons for Hunger
-        self.hunger_up_button = Button(SCREEN_WIDTH // 2 + 110, 320, 40, 40, "+", font_size=32,
-                                       color=Colors.GREEN.value)
-        self.hunger_down_button = Button(self.hunger_up_button.rect.x + self.hunger_up_button.rect.width + 10, 320, 40,
-                                         40, "-", font_size=32, color=Colors.RED.value)
+        self.hunger_up_button = Button(SCREEN_WIDTH // 2 + 110, 320, 40, 40, "+", font_size=32,color=Colors.GREEN.value)
+        self.hunger_down_button = Button(self.hunger_up_button.rect.x + self.hunger_up_button.rect.width + 10, 320, 40,40, "-", font_size=32, color=Colors.RED.value)
 
         # Buttons for Boredom
-        self.boredom_up_button = Button(SCREEN_WIDTH // 2 + 110, 380, 40, 40, "+", font_size=32,
-                                        color=Colors.GREEN.value)
-        self.boredom_down_button = Button(self.boredom_up_button.rect.x + self.boredom_up_button.rect.width + 10, 380,
-                                          40, 40, "-", font_size=32, color=Colors.RED.value)
+        self.boredom_up_button = Button(SCREEN_WIDTH // 2 + 110, 380, 40, 40, "+", font_size=32,color=Colors.GREEN.value)
+        self.boredom_down_button = Button(self.boredom_up_button.rect.x + self.boredom_up_button.rect.width + 10, 380,40, 40, "-", font_size=32, color=Colors.RED.value)
 
         self.play_button = Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT - 100, 200, 50, "Play")
 
@@ -74,6 +68,18 @@ class CharacterSettingsScene(BaseScene):
                     self.active_box = "Name"
                 else:
                     self.active_box = None
+                mouse_pos = event.pos
+
+                if self.play_button.is_clicked(mouse_pos):
+
+                    animal = Animal(
+                        name=self.user_inputs["Name"],
+                        age=self.character_data["Age"],
+                        hunger_level=self.character_data["Hunger"],
+                        boredom_level=self.character_data["Boredom"],
+                    )
+                    return GameScene(animal)
+
                 if self.age_up_button.is_clicked(event.pos):
                     self.holding_flags["age_up"] = True
                 elif self.age_down_button.is_clicked(event.pos):
@@ -135,7 +141,7 @@ class CharacterSettingsScene(BaseScene):
 
     def draw(self, screen):
         screen.fill(Colors.DARK_GRAY.value)
-        screen.blit(self.title, (SCREEN_WIDTH // 2 - self.title.get_width() // 2, 50))
+        screen.blit(self.title, (SCREEN_WIDTH // 2 - self.title.get_width() // 2, 10))
 
         # Draw the selected character above the "Name" input field
         name_box = self.input_boxes["Name"]
@@ -166,3 +172,4 @@ class CharacterSettingsScene(BaseScene):
         self.hunger_down_button.draw(screen)
         self.boredom_up_button.draw(screen)
         self.boredom_down_button.draw(screen)
+        self.play_button.draw(screen)

@@ -5,17 +5,17 @@ class Button:
     x_offset = 0
     y_offset = 60
 
-    def __init__(self, x, y, width, height, text, font_size=48, color=Colors.BLUE.value):
+    def __init__(self, x, y, width, height, label, font=None, font_size=48, color=Colors.BLUE.value):
         self.rect = pygame.Rect(x, y, width, height)
-        self.text = text
-        self.font = pygame.font.SysFont(None, font_size)
-        self.text_surface = self.font.render(text, True, Colors.WHITE.value)
+        self.label = label
+        self.font = font or pygame.font.SysFont(None, font_size)
+        self.text_surface = self.font.render(label, True, Colors.WHITE.value)
         self.bg_color = color
         self.x = x
         self.y = y
 
     def draw(self, screen):
-        pygame.draw.rect(screen, self.bg_color, self.rect)
+        pygame.draw.rect(screen, self.bg_color, self.rect, border_radius=10)
         screen.blit(
             self.text_surface,
             (
