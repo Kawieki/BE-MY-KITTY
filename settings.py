@@ -16,5 +16,6 @@ class Colors(Enum):
     RED = (255, 0, 0)
     PINK_MENU = (181, 78, 199)
     BUTTON_PINK = (202, 135, 214)
+    DARK_VIOLET_BUTTON = (148, 0, 211)
 
 

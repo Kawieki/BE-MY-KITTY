@@ -6,6 +6,7 @@ class Asset:
         self.image = pygame.transform.scale(self.image, size)
         self.position = position
         self.label = label
+        self.name = label.lower().replace(" ", "") if label else None
         self.font_size = font_size
         self.font_color = font_color
         self.label_surface = None

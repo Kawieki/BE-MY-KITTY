@@ -18,6 +18,8 @@ class AnimatedAsset:
                 self.frames.append(img)
 
     def update(self, dt):
+        if not self.frames:
+            return
         self.time_since_last_frame += dt
         if self.time_since_last_frame >= self.frame_duration:
             self.current_frame = (self.current_frame + 1) % len(self.frames)
@@ -26,3 +28,18 @@ class AnimatedAsset:
     def draw(self, screen):
         if self.frames:
             screen.blit(self.frames[self.current_frame], self.pos)
+
+    def draw_scaled(self, screen, scale_factor):
+        if not self.frames:
+            return
+
+        frame = self.frames[self.current_frame]
+        w, h = frame.get_size()
+        new_size = (int(w * scale_factor), int(h * scale_factor))
+        scaled_frame = pygame.transform.scale(frame, new_size)
+
+        # Skalowana pozycja tak, by środek był tam gdzie self.pos.center
+        rect = scaled_frame.get_rect()
+        rect.topleft = self.pos
+
+        screen.blit(scaled_frame, rect)

@@ -4,17 +4,19 @@ from scenes.character_settings_scene import CharacterSettingsScene
 from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
 from scenes.base_scene import BaseScene
 from ui.button import Button
-from utils.Asset import Asset
+from utils.asset import Asset
 
 class CharacterCreationScene(BaseScene):
     def __init__(self):
         self.font = pygame.font.SysFont(None, 48)
         self.title = self.font.render("Choose Character", True, Colors.WHITE.value)
+
         self.buttons = [
-            Button(SCREEN_WIDTH // 2 - 120, SCREEN_HEIGHT // 2 + 100, 250, 50, "Back To Menu")
+            Button(SCREEN_WIDTH // 2 - 120, SCREEN_HEIGHT // 2 + 100, 250, 50, "Back To Menu", color=Colors.BUTTON_PINK.value)
         ]
 
         self.character_assets = []
+
         asset_data = [
             ("assets/characters/hello_kitty.png", "Hello Kitty"),
             ("assets/characters/kuromi.png", "Kuromi"),

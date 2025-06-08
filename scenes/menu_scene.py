@@ -10,13 +10,9 @@ from utils.font_manager import FontManager
 class MenuScene(BaseScene):
     def __init__(self):
         self.logo = pygame.image.load("assets/logo.png")
-        self.logo = pygame.image.load("assets/logo.png")
-
         scale_factor = min(SCREEN_WIDTH / 831, SCREEN_HEIGHT / 157) * 0.9
         new_width = int(831 * scale_factor)
         new_height = int(157 * scale_factor)
-
-        # Scale the logo
         self.logo = pygame.transform.scale(self.logo, (new_width, new_height))
         self.buttons = [
             Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 - 100, 200, 50, "Start Game", font=FontManager.get_font("Boldins"), color=Colors.BUTTON_PINK.value),

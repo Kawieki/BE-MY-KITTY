@@ -6,4 +6,4 @@ class BaseScene:
         pass
 
     def draw(self, screen):
-        pass
+        pa

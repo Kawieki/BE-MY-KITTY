@@ -5,14 +5,17 @@ from scenes.menu_scene import MenuScene
 from utils.scene_manager import SceneManager
 from utils.font_manager import FontManager
 
+def load_fonts():
+    FontManager.load_font("Boldins", "assets/fonts/Boldins.ttf", 35)
+
+
 def main():
     pygame.init()
-    FontManager.load_font("Boldins", "assets/fonts/Boldins.ttf", 35)
+    load_fonts()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Be My Kitty!")
     clock = pygame.time.Clock()
 
-    # Initialize SceneManager with MenuScene
     scene_manager = SceneManager(MenuScene())
 
     running = True
@@ -24,7 +27,6 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        # Handle events, update, and draw the current scene
         scene_manager.handle_events(events)
         scene_manager.update(dt)
         scene_manager.draw(screen)
