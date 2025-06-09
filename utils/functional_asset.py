@@ -18,12 +18,12 @@ class FunctionalAsset(Asset):
                 mouse_x, mouse_y = event.pos
                 self.offset_x = self.rect.x - mouse_x
                 self.offset_y = self.rect.y - mouse_y
-                return True  # zaczęliśmy przeciąganie
+                return True
 
         elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
             if self.dragging:
                 self.dragging = False
-                return True  # zakończyliśmy przeciąganie
+                return True
 
         elif event.type == pygame.MOUSEMOTION:
             if self.dragging:
@@ -31,7 +31,7 @@ class FunctionalAsset(Asset):
                 self.rect.x = mouse_x + self.offset_x
                 self.rect.y = mouse_y + self.offset_y
                 self.position = (self.rect.x, self.rect.y)
-                return True  # przesuwamy asset
+                return True
 
         return False
 

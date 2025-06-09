@@ -4,7 +4,7 @@ from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
 from scenes.base_scene import BaseScene
 from ui.button import Button
 from scenes.character_creation_scene import CharacterCreationScene
-from utils.font_manager import FontManager
+from managers.font_manager import FontManager
 
 
 class MenuScene(BaseScene):

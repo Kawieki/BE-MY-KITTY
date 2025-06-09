@@ -5,7 +5,7 @@ class FoodItem:
         self.image = pygame.image.load(image_path).convert_alpha()
         self.rect = self.image.get_rect(topleft=position)
         self.dragging = False
-        self.offset = (0, 0)  # różnica myszki i topleft podczas dragowania
+        self.offset = (0, 0)  
 
     def handle_event(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -18,7 +18,7 @@ class FoodItem:
         elif event.type == pygame.MOUSEBUTTONUP:
             if self.dragging:
                 self.dragging = False
-                return True  # zwróć True - zakończono przeciąganie
+                return True  
 
         elif event.type == pygame.MOUSEMOTION and self.dragging:
             mx, my = event.pos

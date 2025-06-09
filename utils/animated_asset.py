@@ -38,8 +38,6 @@ class AnimatedAsset:
         new_size = (int(w * scale_factor), int(h * scale_factor))
         scaled_frame = pygame.transform.scale(frame, new_size)
 
-        # Skalowana pozycja tak, by środek był tam gdzie self.pos.center
         rect = scaled_frame.get_rect()
         rect.topleft = self.pos
-
         screen.blit(scaled_frame, rect)

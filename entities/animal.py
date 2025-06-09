@@ -1,12 +1,12 @@
 class Animal:
     def __init__(self, static_asset, animated_asset=None, name="none", age=0):
-        self.name = name
-        self.age = age
-        self.hunger_level = 0
-        self.boredom_level = 0
         self.static_asset = static_asset
         self.animated_asset = animated_asset
-        self.current_asset = static_asset  # Default to static asset
+        self.current_asset = static_asset
+        self.name = name
+        self.age = age
+        self.hunger_level = 100.0
+        self.boredom_level = 100.0
 
     def use_static_asset(self):
         self.current_asset = self.static_asset
