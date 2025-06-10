@@ -36,4 +36,5 @@ class FunctionalAsset(Asset):
         return False
 
     def draw(self, screen):
+        self.position = (self.rect.x, self.rect.y)
         super().draw(screen)
