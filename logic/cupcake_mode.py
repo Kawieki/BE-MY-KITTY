@@ -88,7 +88,7 @@ class CupcakeMode:
         screen.blit(counter_surface, (SCREEN_WIDTH - counter_surface.get_width() - 20, 20))
 
         if self.game_over:
-            game_over_text = font.render("KONIEC GRY - Zgubiłeś 5 babeczek!", True, (255, 0, 0))
+            game_over_text = font.render("GAME OVER - YOU'VE LOST 5 CUPCAKES!", True, (255, 0, 0))
             screen.blit(game_over_text, (SCREEN_WIDTH // 2 - game_over_text.get_width() // 2, SCREEN_HEIGHT // 2))
 
     def reset(self):
