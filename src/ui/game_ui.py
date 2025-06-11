@@ -1,6 +1,6 @@
-from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
-from ui.bar import Bar
-from ui.button import Button
+from src.settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
+from src.ui.bar import Bar
+from src.ui.button import Button
 
 
 def get_bar_positions():

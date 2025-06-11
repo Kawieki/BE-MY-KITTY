@@ -1,5 +1,5 @@
 import pygame
-from random import uniform, randint
+from random import uniform
 
 class LaunchLogic:
     """

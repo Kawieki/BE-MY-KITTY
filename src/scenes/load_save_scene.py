@@ -1,13 +1,13 @@
 import pygame
-from entities.animal import Animal
-from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
-from scenes.base_scene import BaseScene
-from ui.button import Button
-from managers.font_manager import FontManager
-from managers.save_manager import SaveManager
-from scenes.game_scene import GameScene
-from utils.animated_asset import AnimatedAsset
-from utils.asset import Asset
+from src.entities.animal import Animal
+from src.settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
+from src.scenes.base_scene import BaseScene
+from src.ui.button import Button
+from src.managers.font_manager import FontManager
+from src.managers.save_manager import SaveManager
+from src.scenes.game_scene import GameScene
+from src.utils.animated_asset import AnimatedAsset
+from src.utils.asset import Asset
 
 class LoadSaveScene(BaseScene):
     """
@@ -70,7 +70,7 @@ class LoadSaveScene(BaseScene):
                 mouse_pos = pygame.mouse.get_pos()
 
                 if self.back_button.is_clicked(mouse_pos):
-                    from scenes.menu_scene import MenuScene
+                    from src.scenes.menu_scene import MenuScene
                     return MenuScene()
 
                 for save_file in self.save_files:

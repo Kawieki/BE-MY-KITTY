@@ -23,9 +23,6 @@ class SceneManager:
 
             Args:
                 events (list): Lista zdarzeń do obsłużenia.
-
-            Returns:
-                None
         """
         next_scene = self.current_scene.handle_events(events)
         if next_scene:

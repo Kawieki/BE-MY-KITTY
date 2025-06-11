@@ -1,8 +1,8 @@
 import pygame
-from settings import SCREEN_WIDTH, SCREEN_HEIGHT, Colors, FALL_SPEED, SPEED_TIMER, SPEED_INTERVAL, SPEED_INCREMENT
-from utils.functional_asset import FunctionalAsset
+from src.settings import SCREEN_WIDTH, SCREEN_HEIGHT, Colors, FALL_SPEED, SPEED_TIMER, SPEED_INTERVAL, SPEED_INCREMENT
+from src.utils.functional_asset import FunctionalAsset
 from random import randint
-from settings import CHARACTER_SPEED, CUPCAKE_SPAWN_DELAY
+from src.settings import CHARACTER_SPEED, CUPCAKE_SPAWN_DELAY
 
 class CupcakeMode:
     """

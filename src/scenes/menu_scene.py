@@ -1,11 +1,11 @@
 import pygame
 
-from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
-from scenes.base_scene import BaseScene
-from ui.button import Button
-from scenes.character_creation_scene import CharacterCreationScene
-from managers.font_manager import FontManager
-from scenes.load_save_scene import LoadSaveScene
+from src.settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
+from src.scenes.base_scene import BaseScene
+from src.ui.button import Button
+from src.scenes.character_creation_scene import CharacterCreationScene
+from src.managers.font_manager import FontManager
+from src.scenes.load_save_scene import LoadSaveScene
 
 
 class MenuScene(BaseScene):

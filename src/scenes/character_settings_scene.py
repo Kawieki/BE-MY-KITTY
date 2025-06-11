@@ -1,10 +1,10 @@
 import pygame
-from entities.animal import Animal
-from scenes.base_scene import BaseScene
-from scenes.game_scene import GameScene
-from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
-from ui.button import Button
-from utils.animated_asset import AnimatedAsset
+from src.entities.animal import Animal
+from src.scenes.base_scene import BaseScene
+from src.scenes.game_scene import GameScene
+from src.settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
+from src.ui.button import Button
+from src.utils.animated_asset import AnimatedAsset
 
 
 def format_time(seconds):
@@ -67,7 +67,7 @@ class CharacterSettingsScene(BaseScene):
         self.play_button = Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT - 100, 200, 50, "Play")
         self.holding_flags = {key: False for key in _adjustment_keys()}
         self.hold_timer = {key: 0 for key in self.holding_flags}
-        self.hold_delay = 100  #
+        self.hold_delay = 100
 
     def _create_adjustment_buttons(self):
         button_specs = [

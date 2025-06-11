@@ -1,6 +1,6 @@
 import pygame
 
-from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
+from src.settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
 
 class BackgroundRenderer:
     """

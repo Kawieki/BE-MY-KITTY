@@ -1,9 +1,9 @@
 import pygame
 import sys
-from settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS
-from scenes.menu_scene import MenuScene
-from managers.scene_manager import SceneManager
-from managers.font_manager import FontManager
+from src.settings import SCREEN_WIDTH, SCREEN_HEIGHT, FPS
+from src.scenes.menu_scene import MenuScene
+from src.managers.scene_manager import SceneManager
+from src.managers.font_manager import FontManager
 
 def load_fonts():
     FontManager.load_font("Boldins", "assets/fonts/Boldins.ttf", 35)

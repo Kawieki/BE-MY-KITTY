@@ -1,9 +1,9 @@
 import pygame
 from random import randint
-from settings import SCREEN_WIDTH, SCREEN_HEIGHT
-from utils.functional_asset import FunctionalAsset
-from settings import FOOD_COOLDOWN_DURATION
-from managers.audio_manager import AudioManager
+from src.settings import SCREEN_WIDTH, SCREEN_HEIGHT
+from src.utils.functional_asset import FunctionalAsset
+from src.settings import FOOD_COOLDOWN_DURATION
+from src.managers.audio_manager import AudioManager
 
 class FoodManager:
     def __init__(self, food_quantity, animal):

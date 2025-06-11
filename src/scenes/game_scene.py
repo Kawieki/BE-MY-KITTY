@@ -1,15 +1,15 @@
 import pygame
-from logic.cupcake_mode import CupcakeMode
-from logic.food_manager import FoodManager
-from logic.game_logic import GameLogic
-from logic.launch_logic import LaunchLogic
-from managers.audio_manager import AudioManager
-from scenes.base_scene import BaseScene
-from settings import ANIMAL_SCALE_FACTOR, MOUSE_PROXIMITY_THRESHOLD, Colors
-from settings import SCREEN_WIDTH, SCREEN_HEIGHT
-from ui.background_renderer import BackgroundRenderer
-from ui.game_ui import GameUI
-from utils.animated_asset import AnimatedAsset
+from src.logic.cupcake_mode import CupcakeMode
+from src.logic.food_manager import FoodManager
+from src.logic.game_logic import GameLogic
+from src.logic.launch_logic import LaunchLogic
+from src.managers.audio_manager import AudioManager
+from src.scenes.base_scene import BaseScene
+from src.settings import ANIMAL_SCALE_FACTOR, MOUSE_PROXIMITY_THRESHOLD, Colors
+from src.settings import SCREEN_WIDTH, SCREEN_HEIGHT
+from src.ui.background_renderer import BackgroundRenderer
+from src.ui.game_ui import GameUI
+from src.utils.animated_asset import AnimatedAsset
 
 
 class GameScene(BaseScene):
@@ -170,7 +170,7 @@ class GameScene(BaseScene):
             if self.cupcake_mode.is_active:
                 self.cupcake_mode.toggle(self.launch_logic.position)
             else:
-                from scenes.pause_menu_scene import PauseMenuScene
+                from src.scenes.pause_menu_scene import PauseMenuScene
                 return PauseMenuScene(self)
 
     def _handle_drop_file(self, file_path):

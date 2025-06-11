@@ -1,5 +1,5 @@
 import pygame
-from utils.asset import Asset
+from src.utils.asset import Asset
 
 class FunctionalAsset(Asset):
     """

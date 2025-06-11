@@ -1,9 +1,9 @@
 import pygame
-from scenes.character_settings_scene import CharacterSettingsScene
-from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
-from scenes.base_scene import BaseScene
-from ui.button import Button
-from utils.asset import Asset
+from src.scenes.character_settings_scene import CharacterSettingsScene
+from src.settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
+from src.scenes.base_scene import BaseScene
+from src.ui.button import Button
+from src.utils.asset import Asset
 
 class CharacterCreationScene(BaseScene):
     """
@@ -63,7 +63,7 @@ class CharacterCreationScene(BaseScene):
                 for button in self.buttons:
                     if button.is_clicked(mouse_pos):
                         if button.label == "Back To Menu":
-                            from scenes.menu_scene import MenuScene
+                            from src.scenes.menu_scene import MenuScene
                             return MenuScene()
 
     def update(self, dt):

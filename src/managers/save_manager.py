@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from utils.parser import parse_value
+from src.utils.parser import parse_value
 
 class SaveManager:
     """
@@ -110,8 +110,6 @@ class SaveManager:
             with open(os.path.join(self.save_dir, save_file), 'r') as f:
                 for line in f:
                     line = line.strip()
-                    if not line or line.startswith("#") or line.startswith("["):
-                        continue
                     if '=' in line:
                         key, val = line.split("=", 1)
                         key, val = key.strip(), parse_value(val)

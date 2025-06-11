@@ -19,9 +19,6 @@ class FontManager:
             name (str): Nazwa czcionki, pod którą będzie przechowywana.
             path (str): Ścieżka do pliku czcionki.
             size (int): Rozmiar czcionki.
-
-        Returns:
-            None
         """
         FontManager._fonts[name] = pygame.font.Font(path, size)
 

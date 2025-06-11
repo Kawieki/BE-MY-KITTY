@@ -1,9 +1,9 @@
 import pygame
-from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
-from scenes.base_scene import BaseScene
-from ui.button import Button
-from managers.font_manager import FontManager
-from scenes.save_menu_scene import SaveMenuScene
+from src.settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
+from src.scenes.base_scene import BaseScene
+from src.ui.button import Button
+from src.managers.font_manager import FontManager
+from src.scenes.save_menu_scene import SaveMenuScene
 
 class PauseMenuScene(BaseScene):
     """
@@ -53,7 +53,7 @@ class PauseMenuScene(BaseScene):
                         elif button.label == "Save Game":
                             return SaveMenuScene(self.game_scene)
                         elif button.label == "Quit Game":
-                            from scenes.menu_scene import MenuScene
+                            from src.scenes.menu_scene import MenuScene
                             return MenuScene()
             
             elif event.type == pygame.KEYDOWN:

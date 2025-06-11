@@ -4,7 +4,7 @@ import os
 
 class AudioManager:
     """
-    Menedżer audio odpowiedzialny za odtwarzanie muzyki, efektów dźwiękowych oraz zarządzanie animacjami zwierzęcia.
+    Menedżer audio odpowiedzialny za odtwarzanie muzyki, efektów dźwiękowych
 
     Atrybuty:
         current_audio (str): Ścieżka do aktualnie odtwarzanego pliku audio.

@@ -1,9 +1,9 @@
 import pygame
-from settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
-from scenes.base_scene import BaseScene
-from ui.button import Button
-from managers.font_manager import FontManager
-from managers.save_manager import SaveManager
+from src.settings import Colors, SCREEN_WIDTH, SCREEN_HEIGHT
+from src.scenes.base_scene import BaseScene
+from src.ui.button import Button
+from src.managers.font_manager import FontManager
+from src.managers.save_manager import SaveManager
 
 class SaveMenuScene(BaseScene):
     """
