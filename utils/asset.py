@@ -2,13 +2,17 @@ import pygame
 
 class Asset:
     def __init__(self, path, size, position, label=None, font_size=24, font_color=(255, 255, 255)):
-        self.image = pygame.image.load(path)
-        self.image = pygame.transform.scale(self.image, size)
+        self.path = path
+        self.size = size
         self.position = position
         self.label = label
         self.name = label.lower().replace(" ", "") if label else None
         self.font_size = font_size
         self.font_color = font_color
+
+        self.image = pygame.image.load(path)
+        self.image = pygame.transform.scale(self.image, size)
+
         self.label_surface = None
         self.label_position = None
 

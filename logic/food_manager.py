@@ -3,6 +3,7 @@ from random import randint
 from settings import SCREEN_WIDTH, SCREEN_HEIGHT
 from utils.functional_asset import FunctionalAsset
 from settings import FOOD_COOLDOWN_DURATION
+from managers.audio_manager import AudioManager
 
 class FoodManager:
     def __init__(self, food_quantity, animal):
@@ -13,6 +14,7 @@ class FoodManager:
         self.food_item = None
         self.animal = animal
         self.hunger_decrease = 20
+        self.audio_manager = AudioManager()
 
     def update(self, dt):
         if self.feed_cooldown > 0:
@@ -44,6 +46,7 @@ class FoodManager:
         self.animal.hunger_level = max(0, self.animal.hunger_level - self.hunger_decrease)
         self.food_item = None
         self.remaining_food -= 1
+        self.audio_manager.play_sound_effect("assets/audio/feeding_sound.mp3")
         if self.remaining_food <= 0:
             self.feed_cooldown = self.feed_cooldown_duration
 

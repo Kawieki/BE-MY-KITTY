@@ -5,10 +5,29 @@ from random import randint
 from settings import CHARACTER_SPEED, CUPCAKE_SPAWN_DELAY
 
 class CupcakeMode:
+    """
+    Tryb Cupcake - minigra w grze, w której gracz zbiera spadające babeczki.
+
+    Atrybuty:
+        cupcakes (list): Lista obiektów babeczek obecnych na ekranie.
+        collected_cupcakes (int): Liczba zebranych babeczek.
+        missed_cupcakes (int): Liczba babeczek, które zostały pominięte.
+        highest_score (int): Najwyższy wynik osiągnięty przez gracza.
+        spawn_timer (float): Licznik czasu do wygenerowania nowej babeczki.
+        spawn_delay (float): Opóźnienie między generowaniem kolejnych babeczek.
+        character_speed (float): Prędkość poruszania się postaci gracza.
+        is_active (bool): Flaga wskazująca, czy tryb Cupcake jest aktywny.
+        game_over (bool): Flaga wskazująca, czy gra w trybie Cupcake została zakończona.
+        fall_speed (float): Prędkość spadania babeczek.
+        speed_timer (float): Licznik czasu do zwiększenia prędkości spadania babeczek.
+        speed_interval (float): Interwał czasu między kolejnymi zwiększeniami prędkości spadania.
+        speed_increment (float): Wartość, o którą zwiększa się prędkość spadania babeczek.
+    """
     def __init__(self):
         self.cupcakes = []
         self.collected_cupcakes = 0
         self.missed_cupcakes = 0
+        self.highest_score = 0
         self.spawn_timer = 0
         self.spawn_delay = CUPCAKE_SPAWN_DELAY
         self.character_speed = CHARACTER_SPEED
@@ -20,6 +39,17 @@ class CupcakeMode:
         self.speed_increment = SPEED_INCREMENT
 
     def toggle(self, character_position=None):
+        """
+           Włącza lub wyłącza tryb Cupcake.
+
+           Parametry:
+               character_position (Rect, opcjonalny): Pozycja postaci gracza. Jeśli tryb zostanie wyłączony,
+               postać zostanie ustawiona na środku ekranu.
+
+           Zwraca:
+               bool: True, jeśli tryb Cupcake został włączony, False, jeśli został wyłączony.
+           """
+        ...
         self.is_active = not self.is_active
         self.game_over = False
         if not self.is_active:
@@ -29,6 +59,15 @@ class CupcakeMode:
         return self.is_active
 
     def update(self, dt, character_position, character_rect):
+        """
+           Aktualizuje logikę trybu Cupcake, w tym pozycję postaci, generowanie babeczek
+           oraz sprawdzanie kolizji.
+
+           Parametry:
+               dt (float): Delta czasu od ostatniej aktualizacji.
+               character_position (Vector2): Pozycja postaci gracza.
+               character_rect (Rect): Prostokąt określający rozmiar i pozycję postaci gracza.
+           """
         if not self.is_active or self.game_over:
             return
 
@@ -61,6 +100,8 @@ class CupcakeMode:
             if cupcake.rect.colliderect(character_rect):
                 self.cupcakes.remove(cupcake)
                 self.collected_cupcakes += 1
+                if self.collected_cupcakes > self.highest_score:
+                    self.highest_score = self.collected_cupcakes
             elif cupcake.rect.top > SCREEN_HEIGHT:
                 self.cupcakes.remove(cupcake)
                 self.missed_cupcakes += 1
@@ -68,6 +109,9 @@ class CupcakeMode:
                     self.game_over = True
 
     def _spawn_cupcake(self):
+        """
+            Generuje nową babeczkę na ekranie w losowej pozycji.
+        """
         margin = 50
         width = 60
         height = int(width * (466 / 348))
@@ -77,13 +121,20 @@ class CupcakeMode:
         self.cupcakes.append(cupcake)
 
     def draw(self, screen, font):
+        """
+            Rysuje babeczki, licznik punktów oraz komunikat o zakończeniu gry na ekranie.
+
+            Parametry:
+                screen (Surface): Powierzchnia ekranu, na której elementy mają być narysowane.
+                font (Font): Czcionka używana do rysowania tekstu.
+            """
         if not self.is_active:
             return
 
         for cupcake in self.cupcakes:
             cupcake.draw(screen)
 
-        counter_text = f"Cupcakes: {self.collected_cupcakes} | Missed: {self.missed_cupcakes}"
+        counter_text = f"Cupcakes: {self.collected_cupcakes} | Missed: {self.missed_cupcakes} | High Score: {self.highest_score}"
         counter_surface = font.render(counter_text, True, Colors.DARK_VIOLET_BUTTON.value)
         screen.blit(counter_surface, (SCREEN_WIDTH - counter_surface.get_width() - 20, 20))
 
@@ -92,6 +143,9 @@ class CupcakeMode:
             screen.blit(game_over_text, (SCREEN_WIDTH // 2 - game_over_text.get_width() // 2, SCREEN_HEIGHT // 2))
 
     def reset(self):
+        """
+            Resetuje stan trybu Cupcake
+        """
         self.cupcakes.clear()
         self.collected_cupcakes = 0
         self.missed_cupcakes = 0

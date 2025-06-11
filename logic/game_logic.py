@@ -1,9 +1,7 @@
 import pygame
 from random import uniform
-
 from settings import AGE_INTERVAL
 from settings import PLAYTIME_COOLDOWN_DURATION
-
 
 class GameLogic:
     def __init__(self, animal, playtime):

@@ -30,7 +30,6 @@ def main():
         scene_manager.handle_events(events)
         scene_manager.update(dt)
         scene_manager.draw(screen)
-
         pygame.display.flip()
 
     pygame.quit()

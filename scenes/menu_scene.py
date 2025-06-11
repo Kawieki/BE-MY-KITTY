@@ -5,6 +5,7 @@ from scenes.base_scene import BaseScene
 from ui.button import Button
 from scenes.character_creation_scene import CharacterCreationScene
 from managers.font_manager import FontManager
+from scenes.load_save_scene import LoadSaveScene
 
 
 class MenuScene(BaseScene):
@@ -16,7 +17,8 @@ class MenuScene(BaseScene):
         self.logo = pygame.transform.scale(self.logo, (new_width, new_height))
         self.buttons = [
             Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 - 100, 200, 50, "Start Game", font=FontManager.get_font("Boldins"), color=Colors.BUTTON_PINK.value),
-            Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2, 200, 50, "Exit", font=FontManager.get_font("Boldins"), color=Colors.BUTTON_PINK.value)
+            Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2, 200, 50, "Load Save", font=FontManager.get_font("Boldins"), color=Colors.BUTTON_PINK.value),
+            Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 + 100, 200, 50, "Exit", font=FontManager.get_font("Boldins"), color=Colors.BUTTON_PINK.value)
         ]
 
     def handle_events(self, events):
@@ -27,6 +29,8 @@ class MenuScene(BaseScene):
                     if button.is_clicked(mouse_pos):
                         if button.label == "Start Game":
                             return CharacterCreationScene()
+                        elif button.label == "Load Save":
+                            return LoadSaveScene()
                         elif button.label == "Exit":
                             pygame.quit()
                             exit()

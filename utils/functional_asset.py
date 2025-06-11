@@ -1,7 +1,5 @@
 import pygame
-
 from utils.asset import Asset
-
 
 class FunctionalAsset(Asset):
     def __init__(self, path, size, position, label=None, font_size=24, font_color=(255, 255, 255)):
